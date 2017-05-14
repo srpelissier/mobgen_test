@@ -1,0 +1,168 @@
+{
+	"id": "0e22d054-05da-e219-e81e-75d77f487aa6",
+	"name": "testing interview collection",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "691fc5ec-568e-dee9-e4c1-65615b1d63ab",
+			"name": "authentication/oauth",
+			"description": "",
+			"order": [
+				"7bd01479-feef-bbf3-5a52-22402e3371a7"
+			],
+			"owner": 0
+		},
+		{
+			"id": "f1955435-32e8-965f-4d95-45025e7322bb",
+			"name": "generalContent/module",
+			"description": "",
+			"order": [
+				"ec253b63-1940-352f-0fbb-fcab3c9b55f0",
+				"45c2c0fa-f14e-d8e9-ce82-a67eba7f3116",
+				"0ee944a0-cb45-5239-2a43-28c0218a1bd3",
+				"cb8742ea-9bd7-b58f-ad52-0b379b7addf0",
+				"6a311414-b990-a9c3-15a7-afb2ae262523"
+			],
+			"owner": 0,
+			"collectionId": "9331358c-442b-9977-dc7c-3f3685a72372"
+		}
+	],
+	"timestamp": 1477925827031,
+	"owner": 0,
+	"public": false,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "0ee944a0-cb45-5239-2a43-28c0218a1bd3",
+			"headers": "Authorization: Bearer {{Authorization}}\nContent-Type: application/json\n",
+			"url": "{{ServerURL}}/api/generalcontent/module/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1478079010977,
+			"name": "generalContent/module/create",
+			"description": "",
+			"collectionId": "0e22d054-05da-e219-e81e-75d77f487aa6",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"name of the module\",\n  \"isSingle\": false\n}",
+			"folder": "f1955435-32e8-965f-4d95-45025e7322bb"
+		},
+		{
+			"id": "45c2c0fa-f14e-d8e9-ce82-a67eba7f3116",
+			"headers": "Authorization: Bearer {{Authorization}}\n",
+			"url": "{{ServerURL}}/api/generalcontent/module/{{moduleId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1486139392609,
+			"name": "generalContent/module/get",
+			"description": "",
+			"collectionId": "0e22d054-05da-e219-e81e-75d77f487aa6",
+			"responses": []
+		},
+		{
+			"id": "6a311414-b990-a9c3-15a7-afb2ae262523",
+			"headers": "Authorization: Bearer {{Authorization}}\nContent-Type: application/json\n",
+			"url": "{{ServerURL}}/api/generalcontent/module/{{moduleId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1486139427323,
+			"name": "generalContent/module/delete",
+			"description": "",
+			"collectionId": "0e22d054-05da-e219-e81e-75d77f487aa6",
+			"responses": []
+		},
+		{
+			"id": "7bd01479-feef-bbf3-5a52-22402e3371a7",
+			"headers": "Authorization: Basic dGVzdC5tYW5hZ2VyQG1vYmdlbi5jb206YUExMjM0NSo=\n",
+			"url": "{{ServerURL}}/api/oauth/token?_user",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{email}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var token = JSON.parse(responseBody);\n\nif (token && token.access_token ){\n    postman.setEnvironmentVariable(\"Authorization\", token.access_token);\n    postman.setEnvironmentVariable(\"complete-scope\", token.scope);\n    postman.setEnvironmentVariable(\"scope\", token.scope.replace(/::.*/,''));\n    postman.setEnvironmentVariable(\"refresh_token\", token.refresh_token);\n} ",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1486139783415,
+			"name": "authentication-user",
+			"description": "Returns an OAuth token that belongs to the user through the email and password.",
+			"collectionId": "0e22d054-05da-e219-e81e-75d77f487aa6",
+			"responses": []
+		},
+		{
+			"id": "cb8742ea-9bd7-b58f-ad52-0b379b7addf0",
+			"headers": "Authorization: Bearer {{Authorization}}\nContent-Type: application/json\n",
+			"url": "{{ServerURL}}/api/generalcontent/module/{{moduleId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1486139410549,
+			"name": "generalContent/module/update",
+			"description": "",
+			"collectionId": "0e22d054-05da-e219-e81e-75d77f487aa6",
+			"responses": [],
+			"rawModeData": "{\n   \t\"name\": \"name updated\",\n\t\"tags\": [],\n\t\"pushTemplates\": [],\n\t\"createdAt\": 0,\n\t\"updatedAt\": 0\n}"
+		},
+		{
+			"id": "ec253b63-1940-352f-0fbb-fcab3c9b55f0",
+			"headers": "Authorization: Bearer {{Authorization}}\n",
+			"url": "{{ServerURL}}/api/generalcontent/module?page=1&limit=10",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1486139439420,
+			"name": "generalContent/module/list",
+			"description": "",
+			"collectionId": "0e22d054-05da-e219-e81e-75d77f487aa6",
+			"responses": []
+		}
+	]
+}

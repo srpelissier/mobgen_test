@@ -1,0 +1,16 @@
+MOBGEN QA Engineer assignment
+1.1 manual
+1.1.1
+email should be valid: it seems the only validation rule in place is the presence of the @ sign in the submitted email, which is not enough to validate the email is correct. The following values have been tested and validated by the app, but should have been rejected [error]:
+@
+test@test
+----@
+1.1.2
+back button should close the app, if user is logged in: actually if user is logged in, back button goes back to log in screen [error]
+1.1.3
+sign in button disabled when email  or password are empty:
+1.1.3.1: when the app starts, the fields are empty and the button is disabled [good]
+1.1.3.2: when the user types in the email but not in the password field, the button is disbled [good]
+1.1.3.3: when the user types in the password but not in the email field, the button is enabled [error]
+1.1.3.4: when the button has been enabled, and the fields are amade empty again, the button remains enabled [error]
+1.1.4: password is at least 5 characters long: if the button is clicked and the password is less than 5 characters long, amessag eis displayed [good]
